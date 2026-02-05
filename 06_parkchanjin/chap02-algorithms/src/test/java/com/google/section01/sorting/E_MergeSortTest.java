@@ -9,9 +9,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-class C_InsertionSortTest {
+class E_MergeSortTest {
 
-  static int[] act1, exp1, act2, exp2;
+  static int[] act1, exp1, act2, exp2, act3, exp3;
 
   @BeforeAll
   static void setUp(){
@@ -19,6 +19,8 @@ class C_InsertionSortTest {
     exp1 = new int[]{1, 5, 9, 12, 23, 24, 34};
     act2 = new int[] {1, 2, 3, 4, 6, 5};
     exp2 = new int[] {1, 2, 3, 4, 5, 6};
+    act3 = new int[]{306, 99, 267, 21, 196, 56, 319, 131, 233, 305};
+    exp3 = new int[]{21, 56, 99, 131, 196, 233, 267, 305, 306, 319};
   }
 
   static Stream<Arguments> provideAscendingSource() {
@@ -28,13 +30,12 @@ class C_InsertionSortTest {
     );
   }
 
-  @DisplayName("삽입 정렬 테스트")
+  @DisplayName("병합 정렬 테스트")
   @ParameterizedTest
   @MethodSource("provideAscendingSource")
-  void testInsertionSort(int[] act, int[] exp){
-    C_InsertionSort.solution(act); // 원본(act) 자체가 정렬됨
+  void testMergeSort(int[] act, int[] exp){
+    E_MergeSort.solution(act); // 원본(act) 자체가 정렬됨
     Assertions.assertArrayEquals(act, exp); // 배열 요소가 모두 같으면 성공
 
   }
-
 }
